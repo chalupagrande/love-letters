@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items:center;
+  width: 100%;
+  border-bottom: 2px solid red;
+}
+
+.header .title {
+  font-size: 20px;
+}
+
+.header .link:not(:first-child) {
+  margin-left: 1rem;
+  font-size: 16px;
+}
+
+a, a:visited {
+  color: #E50000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
