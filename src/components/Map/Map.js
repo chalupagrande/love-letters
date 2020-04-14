@@ -17,6 +17,8 @@ function Map(props) {
     zoom: 1.8
   });
 
+  console.log('style', process.env.REACT_APP_MAPBOX_STYLE)
+
   return (
     <div className="map-container">
       <ReactMapGL
