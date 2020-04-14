@@ -1,55 +1,34 @@
-import React, {useState} from 'react'
-import { Map as RMap, TileLayer, Marker, Popup } from 'react-leaflet'
-import {useHistory} from 'react-router-dom'
-import * as L from 'leaflet'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import ReactMapGL from 'react-map-gl'
+import Marker from './Marker'
 import './Map.css'
-
-const circleMarker = L.icon({
-  iconUrl: require('../../assets/images/circle.svg'),
-  iconSize:     [20, 20], // size of the icon
-  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
-})
-
-const heartMarker = L.icon({
-  iconUrl: require('../../assets/images/heart.svg'),
-  iconSize:     [20, 20], // size of the icon
-  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
-})
-
 
 
 function Map(props) {
-  const {locations} = props
+  const { locations } = props
   const history = useHistory()
-  let [isHeart, setIsHeart] = useState(null)
 
-  function goToMarker(l){
-    history.push(`/letter/${l.id}`)
-  }
-
-  function swapIcon(id){
-    setIsHeart(id || null)
-  }
-
-  const markers = locations.map(l => (
-    <Marker key={l.id} position={l} onClick={()=> goToMarker(l)} icon={isHeart === l.id ? heartMarker : circleMarker} onMouseOver={()=> swapIcon(l.id)} onMouseOut={()=> swapIcon()}>
-      <Popup>
-        {l.lat}, {l.lng}
-      </Popup>
-    </Marker>
-  ))
+  const [viewport, setViewport] = useState({
+    width: '100%',
+    height: 'calc(100vh - 69px)',
+    latitude: 20,
+    longitude: 0,
+    zoom: 1.8
+  });
 
   return (
     <div className="map-container">
-      <RMap id='map' center={[0,0]} zoom={2} minZoom={1.6}>
-        <TileLayer
-          attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
-          url='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-        />
-        {markers}
-      </RMap>
+      <ReactMapGL
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        mapStyle={process.env.REACT_APP_MAPBOX_STYLE}
+        {...viewport}
+        onViewportChange={setViewport}
+      >
+        <Marker lat={0} lng={0} />
+      </ReactMapGL>
     </div>
-  )
+  );
 }
 
 export default Map
