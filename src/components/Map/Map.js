@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import ReactMapGL from 'react-map-gl'
 import Marker from './Marker'
 import './Map.css'
@@ -7,7 +6,6 @@ import './Map.css'
 
 function Map(props) {
   const { locations } = props
-  const history = useHistory()
 
   const [viewport, setViewport] = useState({
     width: '100%',

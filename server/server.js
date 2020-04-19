@@ -1,18 +1,29 @@
-
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
 const app = express()
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 
-var corsOptions = {
+const {keystone, apps} = require('./cms/keystone')
+
+const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200,
 }
 
-let files = path.join(__dirname, '../build')
+const files = path.join(__dirname, '../build')
+const fontEndRoutes = ['/', '/about', '/donate', '/letter/:id']
+fontEndRoutes.forEach(route => app.use(route, express.static(files)))
 
-
-app.use(cors(corsOptions))
-app.use(express.static(files))
-app.listen(port, () => console.log(`listening at ${port}`))
+keystone
+  .prepare({
+    apps: apps,
+    dev: process.env.NODE_ENV !== 'production',
+  })
+  .then(async ({ middlewares }) => {
+    await keystone.connect();
+    app.use(cors(corsOptions))
+    app.use(middlewares).listen(4000);
+    app.listen(port, () => console.log(`listening at ${port}`))
+  });

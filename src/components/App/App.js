@@ -20,9 +20,20 @@ function App() {
   useEffect(() => {
     async function init() {
       let r = await axios({
-        method: 'get',
-        url: 'http://localhost:1337/posts',
+        method: 'post ',
+        url: `/admin/api/posts`,
+        data: {
+          query: `
+            query {
+              allPosts {
+                city
+                lat
+                lng
+              }
+            `
+        }
       })
+      console.log('r.data', r.data)
       setPosts(r.data)
     }
     init()
