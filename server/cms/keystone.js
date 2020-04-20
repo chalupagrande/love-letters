@@ -15,7 +15,8 @@ const DEV = process.env.NODE_ENV !== 'production'
 
 /*
 
-S3*/
+S3
+*/
 const accessKey = process.env.S3_ACCESS_KEY
 const secretKey = process.env.S3_SECRET_KEY
 const bucketName = process.env.S3_BUCKET_NAME
@@ -200,17 +201,6 @@ const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: 'User',
 });
-
-const exportObject = {
-  keystone,
-  apps: [
-    new GraphQLApp(),
-    new AdminUIApp({
-      enableDefaultRoute: true,
-      authStrategy
-    }),
-  ]
-};
 
 module.exports = {
   keystone,

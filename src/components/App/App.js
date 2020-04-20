@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import {Helmet} from 'react-helmet'
 import axios from 'axios'
 import Header from '../Header'
 import Home from '../../pages/Home'
@@ -70,6 +71,10 @@ function App() {
   console.log('POSTS', data)
   return (
     <Router>
+      <Helmet>
+        <title>Love Letters</title>
+        <meta name="description" content="Love letters to our essential workers. All around the world people are practicing social-distancing in order to flatten the curve. These collective efforts can be easily overlooked. Our goal is to send a message to the essential workers, and show them how much we care." />
+      </Helmet>
       <div className="App">
         <Header/>
         <Store.Provider value={data}>
