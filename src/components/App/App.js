@@ -21,7 +21,7 @@ function App() {
     async function init() {
       let r = await axios({
         method: 'post',
-        url: `http://localhost:3000/admin/api`,
+        url: `/admin/api`,
         data: {
           query: `
             query {
