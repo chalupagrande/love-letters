@@ -60,7 +60,11 @@ function App() {
       const {allPosts, allPages} = r.data.data
       setData({posts: allPosts, pages: allPages})
     }
-    init()
+    try {
+      init()
+    } catch (err) {
+      console.log('ERROR FETCHING URL', err)
+    }
   }, [setData])
 
   console.log('POSTS', data)
