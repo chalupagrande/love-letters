@@ -28,7 +28,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.awssld__content > img {
+  object-fit: contain !important;
+}
+
+.spectrum {
+  position: relative;
+  display:flex;
+  justify-content: flex-end;
+  width: 100%;
+  z-index: 100000000;
 }

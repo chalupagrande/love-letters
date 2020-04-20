@@ -1,3 +1,2 @@
 import React from 'react'
-
-export const Store = React.createContext([])
+export default React.createContext([])

@@ -6,7 +6,7 @@ import Home from '../../pages/Home'
 import Letter from '../../pages/Letter'
 import Donate from '../../pages/Donate'
 import About from '../../pages/About'
-import {Store} from '../../store'
+import Store from '../../store'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,26 +20,44 @@ function App() {
   useEffect(() => {
     async function init() {
       let r = await axios({
-        method: 'post ',
-        url: `/admin/api/posts`,
+        method: 'post',
+        url: `http://localhost:3000/admin/api`,
         data: {
           query: `
             query {
+              allPages {
+                name
+                content
+              }
               allPosts {
+                id
                 city
                 lat
                 lng
+                photos {
+                  id
+                  tag
+                  file {
+                      publicUrl
+                  }
+                }
+                audio {
+                  id
+                  file {
+                      publicUrl
+                  }
+                }
               }
-            `
+            }
+          `
         }
       })
-      console.log('r.data', r.data)
-      setPosts(r.data)
+      setPosts(r.data.data.allPosts)
     }
     init()
   }, [setPosts])
 
-
+  console.log('POSTS', posts)
   return (
     <Router>
       <div className="App">

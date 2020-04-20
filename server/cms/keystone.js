@@ -4,6 +4,8 @@ const { Text, Checkbox, Password, Float, File, Relationship } = require('@keysto
 const { S3Adapter } = require('@keystonejs/file-adapters');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
+const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
+
 const initialiseData = require('./initial-data');
 
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
@@ -172,7 +174,7 @@ keystone.createList('Post', {
     city: {type: Text},
     lat: {type: Float},
     lng: {type: Float},
-    photo: {
+    photos: {
       type: Relationship,
       ref: 'Photo',
       many: true
@@ -182,7 +184,16 @@ keystone.createList('Post', {
       ref: 'Sound'
     },
   },
-  labelName: 'city'
+  labelResolver: (item) => `${item.city}`
+})
+
+keystone.createList('Page', {
+  fields: {
+    name: {type: String},
+    photo: {type: Relationship, ref: 'Photo'},
+    content: {type: Wysiwyg}
+  },
+  labelName: 'name'
 })
 
 const authStrategy = keystone.createAuthStrategy({
@@ -195,7 +206,7 @@ const exportObject = {
   apps: [
     new GraphQLApp(),
     new AdminUIApp({
-      enableDefaultRoute: false,
+      enableDefaultRoute: true,
       authStrategy
     }),
   ]

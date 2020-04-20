@@ -6,6 +6,7 @@ import './Map.css'
 
 function Map(props) {
   const { locations } = props
+  const markers = locations.map(l=> <Marker key={l.id} {...l}/>)
 
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -15,8 +16,6 @@ function Map(props) {
     zoom: 1.8
   });
 
-  console.log('style', process.env.REACT_APP_MAPBOX_STYLE)
-
   return (
     <div className="map-container">
       <ReactMapGL
@@ -25,7 +24,7 @@ function Map(props) {
         {...viewport}
         onViewportChange={setViewport}
       >
-        <Marker lat={0} lng={0} />
+        {markers}
       </ReactMapGL>
     </div>
   );
