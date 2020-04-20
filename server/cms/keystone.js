@@ -212,11 +212,13 @@ const exportObject = {
   ]
 };
 
-if(!DEV) {
-  exportObject.configureExpress = app => {
-    app.set('trust proxy', 1);
-  }
-}
-
-
-module.exports = exportObject
+module.exports = {
+  keystone,
+  apps: [
+    new GraphQLApp(),
+    new AdminUIApp({
+      enableDefaultRoute: true,
+      authStrategy
+    }),
+  ]
+};

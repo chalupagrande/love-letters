@@ -6,7 +6,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 const {keystone, apps} = require('./cms/keystone')
-
+const DEV = process.env.NODE_ENV !== 'production'
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200,
@@ -23,6 +23,7 @@ keystone
   })
   .then(async ({ middlewares }) => {
     await keystone.connect();
+    if(!DEV) app.set('trust proxy', 1);
     app.use(cors(corsOptions))
     app.use(middlewares).listen(4000);
     app.listen(port, () => console.log(`listening at ${port}`))
