@@ -6,7 +6,7 @@ import CaptionedSlider from '../lib/CaptionSlider'
 
 function Letter() {
   let { id } = useParams()
-  const posts = useContext(store)
+  const posts = useContext(store).posts
   let post = posts.find(p => p.id === id)
 
   if (!post) return <NoLetterFound />

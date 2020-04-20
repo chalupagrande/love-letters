@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import store from '../store'
+import ReactHTMLParser from 'react-html-parser'
+import '../styles/Donate.css'
 
 function Donate() {
+  const pages = useContext(store).pages
+  const donate = pages.find(p => p.name === 'Donate')
+  if (!donate) return <h1>Donate</h1>
+  const { content, photo } = donate
   return (
-    <div className="page">
-      <h1>Donate</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus recusandae harum ea tempora officiis assumenda totam quia libero ipsam ex autem quae tempore itaque, aspernatur consequatur debitis facere illum dolores!</p>
+    <div className="page donate">
+      <div className="content">
+        <h1>Donate</h1>
+        {ReactHTMLParser(content)}
+      </div>
     </div>
   )
 }

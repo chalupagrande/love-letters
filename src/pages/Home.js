@@ -3,7 +3,7 @@ import store from '../store'
 import Map from '../components/Map'
 
 function Home() {
-  let posts = useContext(store)
+  let posts = useContext(store).posts
   let locations = posts.map(c => ({ lat: c.lat, lng: c.lng, id: c.id, city: c.city }))
   console.log(locations)
   return (

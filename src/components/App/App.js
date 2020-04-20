@@ -15,7 +15,7 @@ import {
 
 
 function App() {
-  let [posts, setPosts] = useState([])
+  let [data, setData] = useState({posts: [], pages: []})
 
   useEffect(() => {
     async function init() {
@@ -28,6 +28,11 @@ function App() {
               allPages {
                 name
                 content
+                photo {
+                  file {
+                    publicUrl
+                  }
+                }
               }
               allPosts {
                 id
@@ -52,17 +57,18 @@ function App() {
           `
         }
       })
-      setPosts(r.data.data.allPosts)
+      const {allPosts, allPages} = r.data.data
+      setData({posts: allPosts, pages: allPages})
     }
     init()
-  }, [setPosts])
+  }, [setData])
 
-  console.log('POSTS', posts)
+  console.log('POSTS', data)
   return (
     <Router>
       <div className="App">
         <Header/>
-        <Store.Provider value={posts}>
+        <Store.Provider value={data}>
           <Switch>
             <Route path="/letter/:id">
               <Letter />
