@@ -1,6 +1,5 @@
 .page.about {
   display: flex;
-  height: calc(100vh - 54px);
   align-items: center;
   justify-content: center;
   align-items: center;
@@ -8,17 +7,18 @@
 }
 
 .page.about .photo {
-  max-width: 45%;
+  max-height: 85vh;
   margin-right: 1rem;
 }
 
 
-.page.about .content {
+.page.about .about__content {
+  max-width: 70vw;
   display: flex;
   align-items: center;
 }
 
-.page.about .content .words h1{
+.page.about .about__content .words h1{
   padding-top: 0;
   margin-top: 0;
  }

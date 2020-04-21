@@ -11,7 +11,7 @@ function About() {
   console.log(content)
   return (
     <div className="page about">
-      <div className="content">
+      <div className="about__content">
         {photo && photo.file && <img className="photo" src={photo.file.publicUrl} alt="About" />}
         <div className="words">
           <h1>About</h1>
