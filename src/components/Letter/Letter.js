@@ -1,11 +1,10 @@
 import React, { useState, useContext, useRef } from 'react'
-import store from '../store'
-import { useParams } from 'react-router-dom'
-import CaptionedSlider from '../lib/CaptionSlider'
+import store from '../../store'
+import CaptionedSlider from '../../lib/CaptionSlider'
 
 
-function Letter() {
-  let { id } = useParams()
+function Letter(props) {
+  let { id } = props
   const posts = useContext(store).posts
   let post = posts.find(p => p.id === id)
 
@@ -21,19 +20,7 @@ function Letter() {
       <CaptionedSlider
         screens={photos}
         bullets={false}
-        customContent={<Spectrum audio={post.audio.file} />}
       />
-    </div>
-  )
-}
-
-function Spectrum({ audio }) {
-  let audioRef = useRef(null)
-  let [muted, setMuted] = useState(false)
-  return (
-    <div className="spectrum">
-      <audio id="audio-element" src={audio.publicUrl} ref={audioRef} autoPlay={true} loop={true} muted={muted} />
-      <button onClick={() => setMuted(!muted)}>{muted ? "unmute" : "mute"}</button>
     </div>
   )
 }

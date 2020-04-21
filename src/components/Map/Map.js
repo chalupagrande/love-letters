@@ -5,8 +5,10 @@ import './Map.css'
 
 
 function Map(props) {
-  const { locations } = props
-  const markers = locations.map(l=> <Marker key={l.id} {...l}/>)
+  const { locations, onClick } = props
+  const markers = locations.map(l=> <Marker key={l.id} {...l} onClick={()=> {
+    onClick(l)
+  }}/>)
 
   const [viewport, setViewport] = useState({
     width: '100%',

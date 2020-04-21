@@ -1,0 +1,38 @@
+.modal-container {
+  position: fixed;
+  background-color: rgba(0,0,0,0.3);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 100%;
+  padding: 1rem;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.modal__header__title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modal__header__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  transform: rotate(45deg);
+  font-size: 3rem;
+}

@@ -6,15 +6,15 @@
   width: 100%;
   border-bottom: 2px solid red;
   padding: 0 1rem;
+  text-transform: uppercase;
 }
 
 .header .title {
   font-size: 20px;
 }
 
-.header .link:not(:first-child) {
-  margin-left: 1rem;
-  font-size: 16px;
+.header__item {
+  min-width: 150px;
 }
 
 a, a:visited {
@@ -24,4 +24,17 @@ a, a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+.header__item--right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__item--left {
+  display: flex;
+}
+.header .link:last-child {
+  margin-left: 1rem;
+  font-size: 16px;
 }

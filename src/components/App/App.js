@@ -4,7 +4,6 @@ import {Helmet} from 'react-helmet'
 import axios from 'axios'
 import Header from '../Header'
 import Home from '../../pages/Home'
-import Letter from '../../pages/Letter'
 import Donate from '../../pages/Donate'
 import About from '../../pages/About'
 import Store from '../../store'
@@ -16,13 +15,20 @@ import {
 
 
 function App() {
-  let [data, setData] = useState({posts: [], pages: []})
+  let [state, setState] = useState({
+    posts: [],
+    pages: [],
+    showModal: false,
+    isMuted: false,
+    location: {}
+  })
+
 
   useEffect(() => {
     async function init() {
       let r = await axios({
         method: 'post',
-        url: `/admin/api`,
+        url: `http://localhost:3000/admin/api`,
         data: {
           query: `
             query {
@@ -59,16 +65,15 @@ function App() {
         }
       })
       const {allPosts, allPages} = r.data.data
-      setData({posts: allPosts, pages: allPages})
+      setState({...state, posts: allPosts, pages: allPages})
     }
     try {
       init()
     } catch (err) {
       console.log('ERROR FETCHING URL', err)
     }
-  }, [setData])
+  }, [setState]) /* eslint-disable-line */
 
-  console.log('POSTS', data)
   return (
     <Router>
       <Helmet>
@@ -76,12 +81,9 @@ function App() {
         <meta name="description" content="Love letters to our essential workers. All around the world people are practicing social-distancing in order to flatten the curve. These collective efforts can be easily overlooked. Our goal is to send a message to the essential workers, and show them how much we care." />
       </Helmet>
       <div className="App">
-        <Header/>
-        <Store.Provider value={data}>
+        <Store.Provider value={{...state, setState}}>
+          <Header/>
           <Switch>
-            <Route path="/letter/:id">
-              <Letter />
-            </Route>
             <Route path="/donate">
               <Donate />
             </Route>
