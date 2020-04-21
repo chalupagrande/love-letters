@@ -19,7 +19,7 @@ function App() {
     posts: [],
     pages: [],
     showModal: false,
-    isMuted: true,
+    isMuted: false,
     location: {}
   })
 
