@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactMapGL from 'react-map-gl'
 import Marker from './Marker'
+import debounce from '../../lib/debounce'
 import './Map.css'
 
 
@@ -12,11 +13,20 @@ function Map(props) {
 
   const [viewport, setViewport] = useState({
     width: '100%',
-    height: 'calc(100vh - 69px)',
+    height: 'calc(100vh - 54px)',
     latitude: 20,
     longitude: 0,
     zoom: 1.8
   });
+
+  useEffect(()=> {
+    const handleResize = debounce((e)=> {
+      setViewport({...viewport, width: window.innerWidth, height: window.innerHeight})
+    }, 500)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  })
+
 
   return (
     <div className="map-container">

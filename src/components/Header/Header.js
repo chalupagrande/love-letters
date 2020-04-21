@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Header() {
   let state = useContext(store)
-  const { isMuted, setState } = state
+  const { location, isMuted, setState } = state
   console.log(state)
 
   function toggleMute() {
@@ -17,7 +17,7 @@ function Header() {
       <Link className="link header__item header__item--left" to="/about">About</Link>
       <Link className="link header__item" to="/"><h1 className="title">Love Letters</h1></Link>
       <div className="header__item header__item--right">
-        <div onClick={toggleMute}>{isMuted ? 'Unmute' : 'Mute'}</div>
+        {(location.audio || isMuted) && <div className="mute-button" onClick={toggleMute}>{isMuted ? 'Unmute' : 'Mute'}</div>}
         <Link className="link" to="/donate">Donate</Link>
       </div>
     </header>

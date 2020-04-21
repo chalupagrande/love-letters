@@ -16,18 +16,16 @@ function Letter(props) {
     caption: tag,
   }))
   return (
-    <div className="page">
       <CaptionedSlider
         screens={photos}
         bullets={false}
       />
-    </div>
   )
 }
 
 function NoLetterFound() {
   return (
-    <div className="page">
+    <div>
       <p>Oops.</p>
       <p>There was no letter found by that ID</p>
     </div>

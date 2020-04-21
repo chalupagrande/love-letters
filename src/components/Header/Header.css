@@ -38,3 +38,7 @@ a:hover {
   margin-left: 1rem;
   font-size: 16px;
 }
+
+.mute-button {
+  cursor: pointer;
+}

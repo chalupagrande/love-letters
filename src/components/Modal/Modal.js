@@ -4,7 +4,7 @@ import './Modal.css'
 function Modal(props) {
   const { title, onClose, children, isVisible } = props
   return (
-    <div className="modal-container" style={{ display: isVisible ? 'flex' : 'none' }}>
+    <div className="modal-container" style={{ display: isVisible ? 'block' : 'none' }}>
       <div className="modal">
         <div className="modal__header">
           <div className="modal__header__title">{title || ''}</div>
