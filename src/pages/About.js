@@ -12,7 +12,9 @@ function About() {
   return (
     <div className="page about">
       <div className="about__content">
-        {photo && photo.file && <img className="photo" src={photo.file.publicUrl} alt="About" />}
+        <div className="photo">
+          {photo && photo.file && <img src={photo.file.publicUrl} alt="About" />}
+        </div>
         <div className="words">
           <h1>About</h1>
           {ReactHTMLParser(content)}

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef } from 'react'
 import store from '../../store'
 import CaptionedSlider from '../../lib/CaptionSlider'
+import './Letters.css'
 
 
 function Letter(props) {
@@ -12,8 +13,8 @@ function Letter(props) {
 
 
   const photos = post.photos.map(({ file, tag, id }) => ({
+    backgroundColor: '#ffffff',
     media: file.publicUrl,
-    caption: tag,
   }))
   return (
       <CaptionedSlider

@@ -1,8 +1,11 @@
 .page.donate {
-  display: flex;
-  height: calc(100vh -54px);
-  align-items: center;
-  justify-content: center;
-  align-items: center;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  height: 80vh;
+}
+
+.page.donate .content {
+  place-self: center;
 }
