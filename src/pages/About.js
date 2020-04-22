@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import store from '../store'
 import ReactHTMLParser from 'react-html-parser'
+import Footer from '../components/Footer'
 import '../styles/About.css'
 
 function About() {
@@ -20,6 +21,7 @@ function About() {
           {ReactHTMLParser(content)}
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
