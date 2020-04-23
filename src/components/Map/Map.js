@@ -16,7 +16,7 @@ function Map(props) {
     height: window.innerHeight,
     latitude: 20,
     longitude: 0,
-    zoom: 1.8
+    zoom: 1
   });
 
   useEffect(()=> {
