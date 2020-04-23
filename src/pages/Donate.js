@@ -8,7 +8,7 @@ function Donate() {
   const pages = useContext(store).pages
   const donate = pages.find(p => p.name === 'Donate')
   if (!donate) return <h1>Donate</h1>
-  const { content, photo } = donate
+  const { content } = donate
   return (
     <div className="page donate">
       <div className="content">

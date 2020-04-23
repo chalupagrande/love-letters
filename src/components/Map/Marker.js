@@ -5,7 +5,7 @@ const heart = require("../../assets/images/heart.svg")
 
 
 function Marker(props) {
-  const {lat, lng, id, onClick} = props
+  const {lat, lng, onClick} = props
   let [isHovered, setIsHovered] = useState(false)
 
   return (

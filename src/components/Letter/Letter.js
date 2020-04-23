@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import store from '../../store'
 import CaptionedSlider from '../../lib/CaptionSlider'
 import './Letters.css'

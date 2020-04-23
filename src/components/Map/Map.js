@@ -12,8 +12,8 @@ function Map(props) {
   }}/>)
 
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: 'calc(100vh - 54px)',
+    width: window.innerWidth,
+    height: window.innerHeight,
     latitude: 20,
     longitude: 0,
     zoom: 1.8

@@ -13,9 +13,9 @@
   font-size: 20px;
 }
 
-.header__item {
+/* .header__item {
   min-width: 150px;
-}
+} */
 
 a, a:visited {
   color: #E50000;
@@ -39,6 +39,7 @@ a:hover {
   font-size: 16px;
 }
 
-.mute-button {
+.mute-btn {
+  width: 1.5rem;
   cursor: pointer;
 }
