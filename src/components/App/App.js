@@ -39,7 +39,7 @@ function App() {
 
       let r = await axios({
         method: 'post',
-        url: `https://love-letters.us/admin/api`,
+        url: `/admin/api`,
         data: {
           query: `
             query {
