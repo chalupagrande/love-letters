@@ -26,16 +26,18 @@ function App() {
     location: {}
   })
 
+  ReactGA.initialize('UA-48698531-7', {
+    debug: true,
+    titleCase: false,
+    gaOptions: {
+      userId: 123
+    }
+  });
+
 
   useEffect(() => {
     async function init() {
-      ReactGA.initialize('UA-48698531-7', {
-        debug: true,
-        titleCase: false,
-        gaOptions: {
-          userId: 123
-        }
-      });
+
 
       let r = await axios({
         method: 'post',
