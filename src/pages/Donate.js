@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import store from '../store'
 import ReactHTMLParser from 'react-html-parser'
 import '../styles/Donate.css'
-import Footer from '../components/Footer'
 
 function Donate() {
   const pages = useContext(store).pages
@@ -15,7 +14,6 @@ function Donate() {
         <h1>Donate</h1>
         {ReactHTMLParser(content)}
       </div>
-      <Footer/>
     </div>
   )
 }

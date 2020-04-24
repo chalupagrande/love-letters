@@ -3,7 +3,7 @@ import './Footer.css'
 
 function Footer() {
   return (
-      <a className="footer" href="https://chalupagrande.com">&copy; 2020 - chalupagrande.com</a>
+      <p className="footer">&copy; 2020 - <a href="https://chalupagrande.com">chalupagrande.com</a> &amp; <a href="https://upandadam.co">upandadam.co</a></p>
   )
 }
 

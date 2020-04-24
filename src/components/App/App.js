@@ -7,6 +7,9 @@ import Home from '../../pages/Home'
 import Donate from '../../pages/Donate'
 import About from '../../pages/About'
 import Store from '../../store'
+import ReactGA from 'react-ga'
+import Footer from '../Footer'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,9 +29,17 @@ function App() {
 
   useEffect(() => {
     async function init() {
+      ReactGA.initialize('UA-48698531-7', {
+        debug: true,
+        titleCase: false,
+        gaOptions: {
+          userId: 123
+        }
+      });
+
       let r = await axios({
         method: 'post',
-        url: `/admin/api`,
+        url: `https://love-letters.us/admin/api`,
         data: {
           query: `
             query {
@@ -95,6 +106,7 @@ function App() {
             </Route>
           </Switch>
         </Store.Provider>
+        <Footer/>
       </div>
     </Router>
   );
