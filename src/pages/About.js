@@ -8,14 +8,13 @@ function About() {
   const aboutPage = pages.find(p => p.name === 'About')
   if (!aboutPage) return <h1>About</h1>
   const { content, photo } = aboutPage
-  console.log(content)
   return (
     <div className="page about">
-      <div className="about__content">
-        <div className="photo">
-          {photo && photo.file && <img src={photo.file.publicUrl} alt="About" />}
-        </div>
-        <div className="words">
+      <div className="photo">
+        {photo && photo.file && <img src={photo.file.publicUrl} alt="About" />}
+      </div>
+      <div className="words">
+        <div>
           <h1>About</h1>
           {ReactHTMLParser(content)}
         </div>

@@ -13,7 +13,7 @@ function Map(props) {
 
   const [viewport, setViewport] = useState({
     width: window.innerWidth,
-    height: window.innerHeight,
+    height: window.innerHeight - 68 - 30,
     latitude: 20,
     longitude: 0,
     zoom: 1
@@ -21,7 +21,7 @@ function Map(props) {
 
   useEffect(()=> {
     const handleResize = debounce((e)=> {
-      setViewport({...viewport, width: window.innerWidth, height: window.innerHeight})
+      setViewport({...viewport, width: window.innerWidth, height: window.innerHeight - 68 - 30})
     }, 500)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
@@ -29,16 +29,14 @@ function Map(props) {
 
 
   return (
-    <div className="map-container">
-      <ReactMapGL
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle={process.env.REACT_APP_MAPBOX_STYLE}
-        {...viewport}
-        onViewportChange={setViewport}
-      >
-        {markers}
-      </ReactMapGL>
-    </div>
+    <ReactMapGL
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      mapStyle={process.env.REACT_APP_MAPBOX_STYLE}
+      {...viewport}
+      onViewportChange={setViewport}
+    >
+      {markers}
+    </ReactMapGL>
   );
 }
 

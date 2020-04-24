@@ -1,4 +1,6 @@
 .awssld {
   --organic-arrow-height: 14px;
   --organic-arrow-thickness: 2px;
+  --organic-arrow-color: #E50000;
+  --loader-bar-color: #E50000;
   }

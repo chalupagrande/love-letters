@@ -1,9 +1,13 @@
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;;
+  grid-column: 1 / span 12;
+  grid-row: 3 / span 1;
   font-size: 11px;
-  padding: 1em 1em;
-  position: relative;
-  bottom: 0;
   opacity: 0.5;
+  text-align: center;
+  margin: 0;
 }
 
 .footer a {

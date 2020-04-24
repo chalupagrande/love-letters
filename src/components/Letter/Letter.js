@@ -13,7 +13,7 @@ function Letter(props) {
 
 
   const photos = post.photos.map(({ file, tag, id }) => ({
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255,255,255, 0.3)',
     media: file.publicUrl,
   }))
   return (

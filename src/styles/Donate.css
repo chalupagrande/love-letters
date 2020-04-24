@@ -1,9 +1,14 @@
 .page.donate {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
 }
 
 .page.donate .content {
+  max-width: 500px;
   place-self: center;
 }

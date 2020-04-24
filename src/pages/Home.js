@@ -34,13 +34,15 @@ function Home() {
 
   const audioUrl = location?.audio?.file?.publicUrl
   return (
-    <div className="page">
-      <audio id="audio-element" src={audioUrl} autoPlay={true} loop={true} muted={isMuted || !audioUrl} />
-      <Modal title={location.city} isVisible={showModal} onClose={close}>
+    <>
+    <Modal title={location.city} isVisible={showModal} onClose={close}>
         <Letter id={location.id}/>
       </Modal>
+    <div className="page">
+      <audio id="audio-element" src={audioUrl} autoPlay={true} loop={true} muted={isMuted || !audioUrl} />
       <Map locations={posts} onClick={handleClick}/>
     </div>
+    </>
   )
 }
 

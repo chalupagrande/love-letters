@@ -9,7 +9,6 @@ import Sound from '../../assets/images/sound.svg'
 function Header() {
   let state = useContext(store)
   const { location, isMuted, setState } = state
-  console.log(state)
 
   function toggleMute() {
     setState({ ...state, isMuted: !isMuted })

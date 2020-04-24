@@ -9,6 +9,7 @@ import About from '../../pages/About'
 import Store from '../../store'
 import ReactGA from 'react-ga'
 import Footer from '../Footer'
+import debounce from '../../lib/debounce'
 
 import {
   BrowserRouter as Router,
@@ -35,10 +36,23 @@ function App() {
   });
 
 
+
+
+
+
   useEffect(() => {
+
+    function setWidthAndHeightVars(){
+      let vh = window.innerHeight * 0.01;
+      let vw = window.innerWidth * 0.01;
+      // Then we set the value in the --vh custom property to the root of the document
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty('--vw', `${vw}px`);
+    }
+    setWidthAndHeightVars()
+    const handleResize = debounce(setWidthAndHeightVars, 500)
+
     async function init() {
-
-
       let r = await axios({
         method: 'post',
         url: `/admin/api`,
@@ -80,11 +94,14 @@ function App() {
       const {allPosts, allPages} = r.data.data
       setState({...state, posts: allPosts, pages: allPages})
     }
+
     try {
+      window.addEventListener('resize', handleResize)
       init()
     } catch (err) {
       console.log('ERROR FETCHING URL', err)
     }
+    return () => window.removeEventListener('resize', handleResize)
   }, [setState]) /* eslint-disable-line */
 
   return (
